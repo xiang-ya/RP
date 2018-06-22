@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+<html lang="en">
+{% block head %}
+
+
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <title>象牙</title>
+    <link rel="stylesheet" type="text/css" href="styles/general.css"/>
+    <link rel="stylesheet" type="text/css" href="styles/topbar.css"/>
+    <link rel="stylesheet" type="text/css" href="styles/search.css"/>
+    <link rel="stylesheet" type="text/css" href="styles/chat.css"/>
+
+
+    <script type="text/javascript" src="scripts/searching.js"></script>
+    <script type="text/javascript" src="scripts/topBar.js"></script>
+    <script type="text/javascript" src="scripts/autoComplete.js"></script>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <nav>
+            <ul class="main">
+
+                <li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)">
+                    <a href="#">网站主页</a>
+                    <ul class="drop">
+                        <li><a href="#">学校查询</a></li>
+                        <li><a href="#">评价老师</a></li>
+                        <li><a href="#">查看老师</a></li>
+                    </ul>
+                </li>
+
+                <li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)">
+                    <a href="#">工作实习</a>
+                    <ul class="drop">
+                        <li><a href="#">递交简历</a></li>
+                        <li><a href="#">公司查询</a></li>
+                        <li><a href="#">平均薪资</a></li>
+                        <li><a href="#">相 关</a></li>
+                    </ul>
+                </li>
+
+                <li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)">
+                    <a href="#">开发者信息</a>
+                    <ul class="drop">
+                        <li><a href="#">开发者微信</a></li>
+                        <li><a href="#">联系方式</a></li>
+                        <li><a href="#">相关信息</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#">商务合作</a>
+                </li>
+
+                <li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)">
+                    <a href="#">投诉建议</a>
+                    <ul class="drop">
+                        <li><a href="#">老师投诉</a></li>
+                        <li><a href="#">网站投诉</a></li>
+                        <li><a href="#">公司律师</a></li>
+                        <li><a href="#">知识产权</a></li>
+                    </ul>
+                </li>
+
+
+                <li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)">
+                    <a href="#">招聘人员</a>
+                    <ul class="drop">
+                        <li><a href="#">工程部门</a></li>
+                        <li><a href="#">设计部门</a></li>
+                        <li><a href="#">业务部门</a></li>
+                        <li><a href="#">会计部门</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+        </nav>
+
+
+    </html>
+
+    <h1>象牙</h1>
+    <form autocomplete="off" action="http://localhost:8090/homepage/search.jsp">
+        <div style="text-align: center;">
+            <div class="autocomplete">
+                <input type="text" name="professorname" id="searchBar"
+                       onMouseDown="active();"
+                       placeholder="了解您的老师...">
+            </div>
+        </div>
+    </form>
+
+
+    <script>
+        /*initiate the autocomplete function on the "myInput" element, and pass along
+        the countries array as possible autocomplete values:*/
+        autocomplete(document.getElementById("searchBar"), ["刘金英", "何冰", "刘金星", "赵静杰", "李北伟", "张琪",
+            "张淇", "杨荣", "柏灵", "樊雪梅", "李佳民", "李加明", "李佳明",
+            "高数", "孙伟", "樊华", "李佳名", "数学", "洪爱英", "安贞慧",
+            "齐洪英", "刘艳莉", "安慧贞", "齐红英", "黄爱英", "王丽荣", "陈军"]
+        );
+    </script>
+
+    </div>
+{% endblock %}
+<html>

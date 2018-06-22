@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Home</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    {% load static %}
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Text:400,400i,600|Montserrat:200,300,400"
+          rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'ratings/css/bootstrap/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'ratings/fonts/ionicons/css/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'ratings/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'ratings/css/landing-2.css' %}">
+</head>
+<body data-spy="scroll" data-target="#pb-navbar" data-offset="200">
+
+<section class="pb_section bg-light pb_slant-white pb_pb-250" id="section-features">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-6 text-center mb-5">
+                <h5 class="text-uppercase pb_font-15 mb-2 pb_color-dark-opacity-3 pb_letter-spacing-2">
+                    <strong>{{ prof.prof_school }}</strong></h5>
+                <h2>{{ prof.prof_name }}</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md">
+                <div id="pb_faq" class="pb_accordion" data-children=".item">
+                    <form method="POST" autocomplete="off">
+                        {% csrf_token %}
+                        <div class="item">
+                            <a data-toggle="collapse" data-parent="#pb_faq" href="#pb_faq1" aria-expanded="true"
+                               aria-controls="pb_faq1" class="pb_font-22 py-4">你给老师的总体打分 (填写任何1-5之间的数字）</a>
+                            <div id="pb_faq1" class="collapse show" role="tabpanel">
+                                <div class="form-group">
+                                    <label for="id_overall_rating" class="sr-only">overall_rating</label>
+                                    <input type="number" step="any" name="overall_rating" id="id_overall_rating"
+                                           class="form-control"
+                                           placeholder="overall_rating">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <a data-toggle="collapse" data-parent="#pb_faq" href="#pb_faq2" aria-expanded="false"
+                               aria-controls="pb_faq2" class="pb_font-22 py-4">上课的难度系数 （填写任何1-5之间的数字）</a>
+                            <div id="pb_faq2" class="collapse" role="tabpanel">
+                                <div class="form-group">
+                                    <label for="id_overall_difficulty_number" class="sr-only">overall_difficulty</label>
+                                    <input type="number" step="any" name="overall_difficulty_number"
+                                           id="id_overall_difficulty_number"
+                                           class="form-control"
+                                           placeholder="overall_difficulty_number">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <a data-toggle="collapse" data-parent="#pb_faq" href="#pb_faq3" aria-expanded="false"
+                               aria-controls="pb_faq3" class="pb_font-22 py-4">这门课你的最终得分 （A, B, C, D, E, F)</a>
+                            <div id="pb_faq3" class="collapse" role="tabpanel">
+                                <div class="form-group">
+                                    <label for="id_class_graded" class="sr-only">class_gradeds</label>
+                                    <input type="text" name="class_graded" id="id_class_graded" class="form-control"
+                                           placeholder="overall_rating">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <a data-toggle="collapse" data-parent="#pb_faq" href="#pb_faq11" aria-expanded="false"
+                               aria-controls="pb_faq11" class="pb_font-22 py-4">上课的难度 （请简单描述一下上课的难点）</a>
+                            <div id="pb_faq11" class="collapse" role="tabpanel">
+                                <div class="form-group">
+                                    <label for="id_overall_difficulty" class="sr-only">overall_difficulty</label>
+                                    <input type="text" name="overall_difficulty" id="id_overall_difficulty"
+                                           class="form-control"
+                                           placeholder="overall_difficulty">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <a data-toggle="collapse" data-parent="#pb_faq" href="#pb_faq4" aria-expanded="false"
+                               aria-controls="pb_faq4" class="pb_font-22 py-4">老师的颜值 （请简单形容一下老师的外貌）</a>
+                            <div id="pb_faq4" class="collapse" role="tabpanel">
+                                <div class="form-group">
+                                    <label for="id_overall_looking" class="sr-only">overall_looking</label>
+                                    <input type="text" name="overall_looking" id="id_overall_looking"
+                                           class="form-control"
+                                           placeholder="overall_looking">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <a data-toggle="collapse" data-parent="#pb_faq" href="#pb_faq5" aria-expanded="false"
+                               aria-controls="pb_faq5" class="pb_font-22 py-4">考勤率 </a>
+                            <div id="pb_faq5" class="collapse" role="tabpanel">
+                                <div class="form-group">
+                                    {#                <label for="id_attendance_requirement" class="sr-only">attendance_requirement</label>#}
+                                    {#                <input type="select" name="attendance_requirement" id="attendance_requirement" class="form-control"#}
+                                    {#                       placeholder="attendance_requirement">#}
+                                    {#                <tr>#}
+                                    <label for="id_attendance_requirement">Attendance requirement:</label>
+                                    <select name="attendance_requirement" id="id_attendance_requirement">
+                                        <option value="未知">it&#39;s still a secret</option>
+
+                                        <option value="每周必点">100% take attendance</option>
+
+                                        <option value="人少就点">if there seems like not enough people</option>
+
+                                        <option value="基本不管">doesn&#39;t really care the attendance</option>
+
+                                        <option value="纯看心情">depends on the days or professor&#39;s mood</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <a data-toggle="collapse" data-parent="#pb_faq" href="#pb_faq6" aria-expanded="false"
+                               aria-controls="pb_faq6" class="pb_font-22 py-4">老师的性格 （请有一句话形容老师的性格）</a>
+                            <div id="pb_faq6" class="collapse" role="tabpanel">
+                                <div class="form-group">
+                                    <label for="id_prof_personality_tag" class="sr-only">prof_personality_tag</label>
+                                    <input type="text" name="prof_personality_tag" id="id_prof_personality_tag"
+                                           class="form-control"
+                                           placeholder="prof_personality_tag">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <a data-toggle="collapse" data-parent="#pb_faq" href="#pb_faq7" aria-expanded="false"
+                               aria-controls="pb_faq7" class="pb_font-22 py-4">你从这们课上学到的东西 （请简单讲述一下你上这门课学到的最有用的东西）</a>
+                            <div id="pb_faq7" class="collapse" role="tabpanel">
+                                <div class="form-group">
+                                    <label for="id_student_learning_tag" class="sr-only">student_learning_tag</label>
+                                    <input type="text" name="student_learning_tag" id="id_student_learning_tag"
+                                           class="form-control"
+                                           placeholder="student_learning_tag">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <a data-toggle="collapse" data-parent="#pb_faq" href="#pb_faq8" aria-expanded="false"
+                               aria-controls="pb_faq8" class="pb_font-22 py-4">老师的课堂氛围 （请用一句话描述一下这名老师的课堂氛围）</a>
+                            <div id="pb_faq8" class="collapse" role="tabpanel">
+                                <div class="form-group">
+                                    <label for="id_class_atmosphere_tag" class="sr-only">class_atmosphere_tag</label>
+                                    <input type="text" name="class_atmosphere_tag" id="id_class_atmosphere_tag"
+                                           class="form-control"
+                                           placeholder="class_atmosphere_tag">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <a data-toggle="collapse" data-parent="#pb_faq" href="#pb_faq9" aria-expanded="false"
+                               aria-controls="pb_faq9" class="pb_font-22 py-4">老师对作业的要求 （请简单描述一下老师对作业的要求）</a>
+                            <div id="pb_faq9" class="collapse" role="tabpanel">
+                                <div class="form-group">
+                                    <label for="id_homework_requirement_tag"
+                                           class="sr-only">homework_requirement_tag</label>
+                                    <input type="text" name="homework_requirement_tag" id="id_homework_requirement_tag"
+                                           class="form-control"
+                                           placeholder="homework_requirement_tag">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <a data-toggle="collapse" data-parent="#pb_faq" href="#pb_faq10" aria-expanded="false"
+                               aria-controls="pb_faq10" class="pb_font-22 py-4">老师的教学特点 （请简单描述一下老师上课的特点）</a>
+                            <div id="pb_faq10" class="collapse" role="tabpanel">
+                                <div class="form-group">
+                                    <label for="id_teaching_style_tag" class="sr-only">teaching_style_tag</label>
+                                    <input type="text" name="teaching_style_tag" id="id_teaching_style_tag"
+                                           class="form-control"
+                                           placeholder="teaching_style_tag">
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<footer class="pb_footer bg-light" role="contentinfo">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col">
+                <ul class="list-inline">
+                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-facebook"></i></a></li>
+                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-twitter"></i></a></li>
+                    <li class="list-inline-item"><a href="#" class="p-2"><i class="fa fa-linkedin"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col text-center">
+                <p class="pb_font-14">Copyright &copy; 2018.Company name All rights reserved.<a target="_blank" href=“">河北象牙网络科技有限公司</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- loader -->
+<div id="pb_loader" class="show fullscreen">
+    <svg class="circular" width="48px" height="48px">
+        <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/>
+        <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+                stroke="#1d82ff"/>
+    </svg>
+</div>
+
+
+<script src="{% static 'ratings/js/jquery.min.js' %}"></script>
+
+<script src="{% static 'ratings/js/popper.min.js' %}"></script>
+<script src="{% static 'ratings/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'ratings/js/slick.min.js' %}"></script>
+<script src="{% static 'ratings/js/jquery.mb.YTPlayer.min.js' %}"></script>
+
+<script src="{% static 'ratings/js/jquery.waypoints.min.js' %}"></script>
+<script src="{% static 'ratings/js/jquery.easing.1.3.js' %}"></script>
+
+<script src="{% static 'ratings/js/main.js' %}"></script>
+
+</body>
+</html>

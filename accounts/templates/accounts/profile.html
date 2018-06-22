@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block head %}
+    <title>Profile</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'accounts/picture.css' %}" type="text/css">
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Profile</h1>
+        <p>Username: {{ user }}</p>
+        <p>Firstname: {{ user.first_name }}</p>
+        <p>Lastname: {{ user.last_name }}</p>
+        <p>Email: {{ user.email }}</p>
+        <p>Student id: {{ user.student.school_id }}</p>
+        <p>School Name: {{ user.student.school_name }}</p>
+        <a href="http://localhost:8000/accounts/change-password/" class="btn btn-primary btn-sm active"
+           role="button" aria-pressed="true">Password Reset</a>
+        <a href="http://localhost:8000/accounts/profile/edit" class="btn btn-primary btn-sm active"
+           role="button" aria-pressed="true">Profile Update</a>
+    </div>
+    <div class="picture">
+        <img src="{{ user.student.student_image.url }}" width="240">
+    </div>
+{% endblock %}

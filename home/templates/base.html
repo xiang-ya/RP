@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    {% block head %}
+        <title>象牙</title>
+    {% endblock %}
+
+    {% load static %}
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{% static 'home/vendor/bootstrap/css/bootstrap.min.css' %}">
+
+    <!-- Custom fonts for this template -->
+    <link rel="stylesheet" type="text/css" href="{% static 'home/vendor/font-awesome/css/font-awesome.min.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+          rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic'
+          rel='stylesheet' type='text/css'>
+
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="{% static 'home/vendor/magnific-popup/magnific-popup.css' %}">
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="{% static 'home/css/creative.min.css' %}">
+
+    {% block css %}
+    {% endblock %}
+
+</head>
+
+<body id="page-top">
+
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+        {% if request.path == "/home/" %}
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">象牙</a>
+        {% else %}
+            <a class="navbar-brand js-scroll-trigger" href='{% url "home:index" %}' href="#page-top">象牙</a>
+        {% endif %}
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            {% if user.is_authenticated %}
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#about">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            {% else %}
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            {% endif %}
+        </div>
+        <div class="navbar-nav" id="navbarNavAltMarkup">
+            {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-item nav-link" href="{% url "accounts:logout" %}">Logout</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-item nav-link" href="{% url "accounts:login" %}">
+                        Login
+                    </a>
+                </li>
+            {% endif %}
+        </div>
+    </div>
+</nav>
+
+<header class="masthead text-center text-white d-flex">
+    <div class="container my-auto">
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <h3 class="text-uppercase">
+                    <strong>Find Your Favorite Professor Here</strong>
+                </h3>
+                {#                <hr>#}
+            </div>
+            <div class="col-lg-8 mx-auto">
+                <p class="text-faded mb-10">Search and comment your favorite professor here</p>
+                {% block search %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="bg-primary" id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <h2 class="section-heading text-white">We've got what you need!</h2>
+                <hr class="light my-4">
+                <p class="text-faded mb-4">Start Bootstrap has everything you need to get your new website up and
+                    running in no time! All of the templates and themes on Start Bootstrap are open source, free to
+                    download, and easy to use. No strings attached!</p>
+                <a class="btn btn-light btn-xl js-scroll-trigger" href="#services">Get Started!</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="services">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">At Your Service</h2>
+                <hr class="my-4">
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="service-box mt-5 mx-auto">
+                    <i class="fa fa-4x fa-diamond text-primary mb-3 sr-icons"></i>
+                    <h3 class="mb-3">Sturdy Templates</h3>
+                    <p class="text-muted mb-0">Our templates are updated regularly so they don't break.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="service-box mt-5 mx-auto">
+                    <i class="fa fa-4x fa-paper-plane text-primary mb-3 sr-icons"></i>
+                    <h3 class="mb-3">Ready to Ship</h3>
+                    <p class="text-muted mb-0">You can use this theme as is, or you can make changes!</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="service-box mt-5 mx-auto">
+                    <i class="fa fa-4x fa-newspaper-o text-primary mb-3 sr-icons"></i>
+                    <h3 class="mb-3">Up to Date</h3>
+                    <p class="text-muted mb-0">We update dependencies to keep things fresh.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="service-box mt-5 mx-auto">
+                    <i class="fa fa-4x fa-heart text-primary mb-3 sr-icons"></i>
+                    <h3 class="mb-3">Made with Love</h3>
+                    <p class="text-muted mb-0">You have to make your websites with love these days!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="p-0" id="portfolio">
+    <div class="container-fluid p-0">
+        <div class="row no-gutters popup-gallery">
+            <div class="col-lg-4 col-sm-6">
+                <a class="portfolio-box" href="{% static 'home/img/portfolio/fullsize/1.jpg' %}">
+                    <img class="img-fluid" src="{% static "home/img/portfolio/thumbnails/1.jpg" %}" alt="">
+                    <div class="portfolio-box-caption">
+                        <div class="portfolio-box-caption-content">
+                            <div class="project-category text-faded">
+                                Category
+                            </div>
+                            <div class="project-name">
+                                Project Name
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <a class="portfolio-box" href="{% static "home/img/portfolio/fullsize/2.jpg" %}">
+                    <img class="img-fluid" src="{% static "home/img/portfolio/thumbnails/2.jpg" %}" alt="">
+                    <div class="portfolio-box-caption">
+                        <div class="portfolio-box-caption-content">
+                            <div class="project-category text-faded">
+                                Category
+                            </div>
+                            <div class="project-name">
+                                Project Name
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <a class="portfolio-box" href="{% static "home/img/portfolio/fullsize/3.jpg" %}">
+                    <img class="img-fluid" src="{% static "home/img/portfolio/thumbnails/3.jpg" %}" alt="">
+                    <div class="portfolio-box-caption">
+                        <div class="portfolio-box-caption-content">
+                            <div class="project-category text-faded">
+                                Category
+                            </div>
+                            <div class="project-name">
+                                Project Name
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <a class="portfolio-box" href="{% static "home/img/portfolio/fullsize/4.jpg" %}">
+                    <img class="img-fluid" src="{% static "home/img/portfolio/thumbnails/4.jpg" %}" alt="">
+                    <div class="portfolio-box-caption">
+                        <div class="portfolio-box-caption-content">
+                            <div class="project-category text-faded">
+                                Category
+                            </div>
+                            <div class="project-name">
+                                Project Name
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <a class="portfolio-box" href="{% static "home/img/portfolio/fullsize/5.jpg" %}">
+                    <img class="img-fluid" src="{% static "home/img/portfolio/thumbnails/5.jpg" %}" alt="">
+                    <div class="portfolio-box-caption">
+                        <div class="portfolio-box-caption-content">
+                            <div class="project-category text-faded">
+                                Category
+                            </div>
+                            <div class="project-name">
+                                Project Name
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <a class="portfolio-box" href="{% static "home/img/portfolio/fullsize/6.jpg" %}">
+                    <img class="img-fluid" src="{% static "home/img/portfolio/thumbnails/6.jpg" %}" alt="">
+                    <div class="portfolio-box-caption">
+                        <div class="portfolio-box-caption-content">
+                            <div class="project-category text-faded">
+                                Category
+                            </div>
+                            <div class="project-name">
+                                Project Name
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="bg-dark text-white">
+    <div class="container text-center">
+        <h2 class="mb-4">Start Knowing Our Compsny!</h2>
+        <a class="btn btn-light btn-xl sr-button" href="http://startbootstrap.com/template-overviews/creative/">
+            我们是象牙</a>
+    </div>
+</section>
+
+<section id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <h2 class="section-heading">Let's Get In Touch!</h2>
+                <hr class="my-4">
+                <p class="mb-5">Ready to start your next project with us? That's great! Give us a call or send us an
+                    email and we will get back to you as soon as possible!</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 ml-auto text-center">
+                <i class="fa fa-phone fa-3x mb-3 sr-contact"></i>
+                <p>美国电话：857-919-2103</p>
+                <p>国内电话：18630166658（7.1-8.26使用)</p>
+
+            </div>
+            <div class="col-lg-4 mr-auto text-center">
+                <i class="fa fa-envelope-o fa-3x mb-3 sr-contact"></i>
+                <p>
+                    <a href="mailto:exchangest@163.com">exchangest@163.com</a>
+                </p>
+            </div>
+            <div class="col-lg-4 mr-auto text-center">
+                <i class="fa fa-wechat fa-3x mb-3 sr-contact"></i>
+                <p>zhang0000326</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% block body %}
+{% endblock %}
+
+{% load static %}
+<!-- Bootstrap core JavaScript -->
+<script src="{% static 'home/vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'home/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+<!-- Plugin JavaScript -->
+<script src="{% static 'home/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+<script src="{% static 'home/vendor/scrollreveal/scrollreveal.min.js' %}"></script>
+<script src="{% static 'home/vendor/magnific-popup/jquery.magnific-popup.min.js' %}"></script>
+
+<!-- Custom scripts for this template -->
+<script src="{% static 'home/js/creative.min.js' %}"></script>
+
+
+{% block js %}
+{% endblock %}
+</body>
+
+
+{#--------------------------------------------------------------------------------------------------------------------#}
+{#<body>#}
+{##}
+{#<div class="container">#}
+{#    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">#}
+{#        <a class="navbar-brand" href="/">象牙</a>#}
+{#        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"#}
+{#                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">#}
+{#            <span class="navbar-toggler-icon"></span>#}
+{#        </button>#}
+{#        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">#}
+{#            <div class="navbar-nav">#}
+{#                {% if user.is_authenticated %}#}
+{#                    <a class="nav-item nav-link active" href="{% url "home:index" %}">Home<span class="sr-only">(current)</span></a>#}
+{#                    <a class="nav-item nav-link" href="#">About Us</a>#}
+{#                    <a class="nav-item nav-link" href="#">Contact</a>#}
+{#                    <a class="nav-item nav-link" href="#">Join Us</a>#}
+{#                    <a class="nav-item nav-link" href="{% url "accounts:profile" %}">Personal Profile</a>#}
+{#                {% else %}#}
+{#                    <a class="nav-item nav-link active" href="{% url "home:index" %}">Home<span class="sr-only">(current)</span></a>#}
+{#                    <a class="nav-item nav-link" href="#">About Us</a>#}
+{#                    <a class="nav-item nav-link" href="#">Contact</a>#}
+{#                    <a class="nav-item nav-link" href="#">Join Us</a>#}
+{#                {% endif %}#}
+{#            </div>#}
+{#        </div>#}
+{#        <div class="navbar-nav" id="navbarNavAltMarkup">#}
+{#            {% if user.is_authenticated %}#}
+{#                <a class="nav-item nav-link" href="{% url "accounts:logout" %}">Logout</a>#}
+{#            {% else %}#}
+{#                <a class="nav-item nav-link" href="{% url "accounts:register" %}">Register</a>#}
+{#                <a class="nav-item nav-link" href="{% url "accounts:login" %}">Login</a>#}
+{#            {% endif %}#}
+{#        </div>#}
+{#    </nav>#}
+{#</div>#}
+
+{#</body>#}
+
+</html>

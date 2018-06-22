@@ -1,0 +1,18 @@
+<h1>{{ first_name }}</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>{{ name }}</h1>
+<h1>{{ student }}</h1>
+    <ul>
+    {% for class in register_class_list %}
+        <li>{{ class.class_registration }}</li>
+
+    {% endfor %}
+    </ul>
+</body>
+</html>
