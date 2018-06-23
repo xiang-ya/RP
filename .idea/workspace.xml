@@ -4,9 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/searchings/templates/searchings/professor.html" line="34" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cf18df7a-4397-4277-bec2-111e9d284ea2" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/cr/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/cr/views.py" afterDir="false" />
-    </list>
+    <list default="true" id="cf18df7a-4397-4277-bec2-111e9d284ea2" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -138,7 +136,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="952" />
     <option name="width" value="977" />
     <option name="height" value="1038" />
@@ -288,7 +286,7 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="762" y="0" width="781" height="830" extended-state="0" />
+    <frame x="762" y="0" width="781" height="830" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="7" />
